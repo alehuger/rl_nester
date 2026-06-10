@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Distribution / packaging
+*.egg-info/
+*.egg
+
+# Visual Studio Code
+.vscode/
+.cursor
+
+# Logs
+*.log
+*out*
+*.prof
+
+# specific files extensions
+*.dxf
+*.pkl
+*.npz
+*.pyc
+*.png
+*-checkpoint.ipynb
+*.whl
+*.json
+
+# Ignore folders
+tmp/*
+data/
+run/cloud/train/configs/
+run/cloud/eval/configs/

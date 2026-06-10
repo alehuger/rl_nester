@@ -1,0 +1,90 @@
+# Docker context for run/cloud (train + bench eval).
+# Runtime datasets, checkpoints, and run outputs are fetched from GCS in the container.
+
+# --- Version control & IDE ---
+.git
+.gitattributes
+.github
+.cursor
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# --- Local data & scratch (workers use cloud.data_path / val_db_blob) ---
+data/
+tmp/
+mnt/
+**/data/runs/
+**/eval/**/rank_*_of_*
+
+# --- Large binaries & training artifacts ---
+*.npz
+*.npy
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.pkl
+*.pickle
+*.h5
+*.parquet
+*.arrow
+*.feather
+
+# Wheels: CGAL is copied explicitly in Dockerfile before COPY .
+*.whl
+!cgalpy-*.whl
+
+# --- Dev-only (not imported by cloud workers) ---
+admin/
+diag/
+nester_cpp/
+deploy/
+run/local/
+**/.cursor/
+agent-transcripts/
+
+# --- Python build / test caches ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.venv/
+venv/
+.env
+.env.*
+
+# --- Logs, plots, notebooks (regenerate on VM or upload from eval) ---
+*.log
+*.out
+*.prof
+*.png
+*.pdf
+*.svg
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.ipynb
+.ipynb_checkpoints
+*.dxf
+
+# --- Optional JSON dumps (keep small configs in run/cloud/**/config.yaml) ---
+**/validation_rollouts.json
+**/eval_joint_summary.json
+**/instance_*_best_occ_values.json

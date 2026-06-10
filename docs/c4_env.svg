@@ -1,0 +1,162 @@
+<svg viewBox="2.00 2.00 134.48 136.00" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+<!-- db: train_db.npz placed=[13489, 25556, 42528] candidate=31846 patches=13x10 pairwise_nfp=False -->
+  <polygon points="92.20,78.57 96.19,80.56 98.34,84.99 96.91,91.13 92.47,94.35 81.30,87.58 79.22,83.16 88.41,82.59 92.20,78.57" fill="rgba(217, 164, 65, 0.18)" stroke="#D9A441" stroke-width="1.5" />
+  <polygon points="76.56,81.74 66.84,69.46 61.53,66.57 59.58,66.82 58.49,64.60 59.16,57.90 60.91,51.16 62.77,47.67 67.04,44.30 75.15,42.19 82.36,46.59 84.69,45.73 86.35,42.54 89.81,39.88 91.95,39.32 94.13,41.52 101.15,62.04 99.53,67.98 97.73,69.70 90.42,68.84 86.91,73.27 85.06,79.03 83.35,81.73 79.98,83.11 76.56,81.74" fill="rgba(116, 139, 162, 0.14)" stroke="#748BA2" stroke-width="1.5" />
+  <polygon points="56.73,72.94 66.45,73.30 74.58,79.23 74.43,93.76 60.93,93.21 51.69,81.57 56.73,72.94" fill="rgba(107, 110, 54, 0.14)" stroke="#6B6E36" stroke-width="1.5" />
+  <path d="M 116.82,88.12 L 118.66,92.15 L 116.80,101.05 L 115.38,107.20 L 110.93,110.42 L 109.83,110.97 L 107.27,116.51 L 102.83,119.73 L 86.04,116.44 L 84.79,119.14 L 71.29,118.58 L 47.29,113.87 L 38.06,102.24 L 36.03,97.84 L 38.27,87.90 L 29.20,76.48 L 27.26,71.48 L 27.60,67.46 L 25.62,63.68 L 30.66,55.05 L 33.99,49.84 L 33.51,48.93 L 32.42,46.71 L 33.08,40.01 L 34.84,33.27 L 36.69,29.78 L 40.62,23.63 L 44.89,20.25 L 53.01,18.15 L 60.22,22.55 L 62.05,21.87 L 64.21,18.50 L 67.67,15.84 L 69.80,15.28 L 71.99,17.48 L 74.30,21.34 L 77.22,22.00 L 85.33,18.23 L 87.47,17.67 L 108.13,22.30 L 110.31,24.49 L 116.18,30.81 L 123.20,51.33 L 121.59,57.27 L 119.70,64.03 L 121.47,69.20 L 119.61,78.10 L 118.00,84.05 L 117.93,84.11 L 116.82,88.12" fill="none" stroke="#8B3236" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.95" />
+  <path d="M 110.88,85.12 H 118.41 Q 121.41,85.12 121.41,88.12 V 110.45 Q 121.41,113.45 118.41,113.45 H 110.88 Q 107.88,113.45 107.88,110.45 V 88.12 Q 107.88,85.12 110.88,85.12 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="116.82,88.12 117.99,90.68 118.41,93.33 117.84,96.10 117.26,98.86 116.67,101.62 116.03,104.36 115.40,107.11 113.16,108.80 110.88,110.45" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 115.67,88.12 L 117.97,88.12 M 116.82,86.97 L 116.82,89.27" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 116.84,90.68 L 119.14,90.68 M 117.99,89.53 L 117.99,91.83" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 117.26,93.33 L 119.56,93.33 M 118.41,92.18 L 118.41,94.48" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 116.69,96.10 L 118.99,96.10 M 117.84,94.95 L 117.84,97.25" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 116.11,98.86 L 118.41,98.86 M 117.26,97.71 L 117.26,100.01" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 115.52,101.62 L 117.82,101.62 M 116.67,100.47 L 116.67,102.77" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 114.88,104.36 L 117.18,104.36 M 116.03,103.21 L 116.03,105.51" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 114.25,107.11 L 116.55,107.11 M 115.40,105.96 L 115.40,108.26" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 112.01,108.80 L 114.31,108.80 M 113.16,107.65 L 113.16,109.95" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 109.73,110.45 L 112.03,110.45 M 110.88,109.30 L 110.88,111.60" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 87.67,109.47 H 109.14 Q 112.14,109.47 112.14,112.47 V 119.47 Q 112.14,122.47 109.14,122.47 H 87.67 Q 84.67,122.47 84.67,119.47 V 112.47 Q 84.67,109.47 87.67,109.47 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="109.14,112.47 107.95,115.03 106.30,117.21 104.02,118.87 101.51,119.47 98.74,118.93 95.97,118.38 93.20,117.84 90.44,117.30 87.67,116.75" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 107.99,112.47 L 110.29,112.47 M 109.14,111.32 L 109.14,113.62" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 106.80,115.03 L 109.10,115.03 M 107.95,113.88 L 107.95,116.18" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 105.15,117.21 L 107.45,117.21 M 106.30,116.06 L 106.30,118.36" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 102.87,118.87 L 105.17,118.87 M 104.02,117.72 L 104.02,120.02" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 100.36,119.47 L 102.66,119.47 M 101.51,118.32 L 101.51,120.62" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 97.59,118.93 L 99.89,118.93 M 98.74,117.78 L 98.74,120.08" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 94.82,118.38 L 97.12,118.38 M 95.97,117.23 L 95.97,119.53" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 92.05,117.84 L 94.35,117.84 M 93.20,116.69 L 93.20,118.99" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 89.29,117.30 L 91.59,117.30 M 90.44,116.15 L 90.44,118.45" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 86.52,116.75 L 88.82,116.75 M 87.67,115.60 L 87.67,117.90" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 61.42,113.65 H 85.55 Q 88.55,113.65 88.55,116.65 V 119.10 Q 88.55,122.10 85.55,122.10 H 61.42 Q 58.42,122.10 58.42,119.10 V 116.65 Q 58.42,113.65 61.42,113.65 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="85.55,117.49 83.78,119.10 80.97,118.98 78.15,118.86 75.33,118.75 72.51,118.63 69.72,118.27 66.95,117.73 64.19,117.19 61.42,116.65" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 84.40,117.49 L 86.70,117.49 M 85.55,116.34 L 85.55,118.64" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 82.63,119.10 L 84.93,119.10 M 83.78,117.95 L 83.78,120.25" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 79.82,118.98 L 82.12,118.98 M 80.97,117.83 L 80.97,120.13" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 77.00,118.86 L 79.30,118.86 M 78.15,117.71 L 78.15,120.01" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 74.18,118.75 L 76.48,118.75 M 75.33,117.60 L 75.33,119.90" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 71.36,118.63 L 73.66,118.63 M 72.51,117.48 L 72.51,119.78" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 68.57,118.27 L 70.87,118.27 M 69.72,117.12 L 69.72,119.42" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 65.80,117.73 L 68.10,117.73 M 66.95,116.58 L 66.95,118.88" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 63.04,117.19 L 65.34,117.19 M 64.19,116.04 L 64.19,118.34" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 60.27,116.65 L 62.57,116.65 M 61.42,115.50 L 61.42,117.80" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 38.70,100.06 H 58.65 Q 61.65,100.06 61.65,103.06 V 116.10 Q 61.65,119.10 58.65,119.10 H 38.70 Q 35.70,119.10 35.70,116.10 V 103.06 Q 35.70,100.06 38.70,100.06 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="58.65,116.10 55.88,115.56 53.12,115.02 50.35,114.47 47.58,113.93 45.72,111.89 43.97,109.69 42.21,107.48 40.46,105.27 38.70,103.06" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 57.50,116.10 L 59.80,116.10 M 58.65,114.95 L 58.65,117.25" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 54.73,115.56 L 57.03,115.56 M 55.88,114.41 L 55.88,116.71" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 51.97,115.02 L 54.27,115.02 M 53.12,113.87 L 53.12,116.17" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 49.20,114.47 L 51.50,114.47 M 50.35,113.32 L 50.35,115.62" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 46.43,113.93 L 48.73,113.93 M 47.58,112.78 L 47.58,115.08" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 44.57,111.89 L 46.87,111.89 M 45.72,110.74 L 45.72,113.04" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 42.82,109.69 L 45.12,109.69 M 43.97,108.54 L 43.97,110.84" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 41.06,107.48 L 43.36,107.48 M 42.21,106.33 L 42.21,108.63" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 39.31,105.27 L 41.61,105.27 M 40.46,104.12 L 40.46,106.42" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 37.55,103.06 L 39.85,103.06 M 38.70,101.91 L 38.70,104.21" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 30.73,75.40 H 37.84 Q 40.84,75.40 40.84,78.40 V 100.63 Q 40.84,103.63 37.84,103.63 H 30.73 Q 27.73,103.63 27.73,100.63 V 78.40 Q 27.73,75.40 30.73,75.40 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="37.31,100.63 36.14,98.06 36.60,95.33 37.22,92.58 37.84,89.83 37.74,87.24 35.99,85.03 34.24,82.82 32.48,80.61 30.73,78.40" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 36.16,100.63 L 38.46,100.63 M 37.31,99.48 L 37.31,101.78" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 34.99,98.06 L 37.29,98.06 M 36.14,96.91 L 36.14,99.21" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 35.45,95.33 L 37.75,95.33 M 36.60,94.18 L 36.60,96.48" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 36.07,92.58 L 38.37,92.58 M 37.22,91.43 L 37.22,93.73" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 36.69,89.83 L 38.99,89.83 M 37.84,88.68 L 37.84,90.98" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 36.59,87.24 L 38.89,87.24 M 37.74,86.09 L 37.74,88.39" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 34.84,85.03 L 37.14,85.03 M 35.99,83.88 L 35.99,86.18" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 33.09,82.82 L 35.39,82.82 M 34.24,81.67 L 34.24,83.97" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 31.33,80.61 L 33.63,80.61 M 32.48,79.46 L 32.48,81.76" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 29.58,78.40 L 31.88,78.40 M 30.73,77.25 L 30.73,79.55" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 26.03,50.29 H 31.79 Q 34.79,50.29 34.79,53.29 V 76.14 Q 34.79,79.14 31.79,79.14 H 26.03 Q 23.03,79.14 23.03,76.14 V 53.29 Q 23.03,50.29 26.03,50.29 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="29.07,76.14 28.05,73.51 27.31,70.84 27.55,68.03 26.56,65.47 26.03,62.99 27.45,60.55 28.87,58.12 30.29,55.68 31.79,53.29" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 27.92,76.14 L 30.22,76.14 M 29.07,74.99 L 29.07,77.29" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 26.90,73.51 L 29.20,73.51 M 28.05,72.36 L 28.05,74.66" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 26.16,70.84 L 28.46,70.84 M 27.31,69.69 L 27.31,71.99" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 26.40,68.03 L 28.70,68.03 M 27.55,66.88 L 27.55,69.18" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 25.41,65.47 L 27.71,65.47 M 26.56,64.32 L 26.56,66.62" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 24.88,62.99 L 27.18,62.99 M 26.03,61.84 L 26.03,64.14" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 26.30,60.55 L 28.60,60.55 M 27.45,59.40 L 27.45,61.70" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 27.72,58.12 L 30.02,58.12 M 28.87,56.97 L 28.87,59.27" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 29.14,55.68 L 31.44,55.68 M 30.29,54.53 L 30.29,56.83" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 30.64,53.29 L 32.94,53.29 M 31.79,52.14 L 31.79,54.44" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 32.50,24.28 H 38.29 Q 41.29,24.28 41.29,27.28 V 50.91 Q 41.29,53.91 38.29,53.91 H 32.50 Q 29.50,53.91 29.50,50.91 V 27.28 Q 29.50,24.28 32.50,24.28 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="33.31,50.91 33.28,48.46 32.50,45.84 32.78,43.04 33.06,40.23 33.74,37.49 34.45,34.76 35.44,32.14 36.77,29.66 38.29,27.28" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 32.16,50.91 L 34.46,50.91 M 33.31,49.76 L 33.31,52.06" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 32.13,48.46 L 34.43,48.46 M 33.28,47.31 L 33.28,49.61" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 31.35,45.84 L 33.65,45.84 M 32.50,44.69 L 32.50,46.99" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 31.63,43.04 L 33.93,43.04 M 32.78,41.89 L 32.78,44.19" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 31.91,40.23 L 34.21,40.23 M 33.06,39.08 L 33.06,41.38" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 32.59,37.49 L 34.89,37.49 M 33.74,36.34 L 33.74,38.64" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 33.30,34.76 L 35.60,34.76 M 34.45,33.61 L 34.45,35.91" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 34.29,32.14 L 36.59,32.14 M 35.44,30.99 L 35.44,33.29" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 35.62,29.66 L 37.92,29.66 M 36.77,28.51 L 36.77,30.81" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 37.14,27.28 L 39.44,27.28 M 38.29,26.13 L 38.29,28.43" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 39.81,15.46 H 61.72 Q 64.72,15.46 64.72,18.46 V 24.90 Q 64.72,27.90 61.72,27.90 H 39.81 Q 36.81,27.90 36.81,24.90 V 18.46 Q 36.81,15.46 39.81,15.46 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="39.81,24.90 41.65,22.82 43.86,21.07 46.35,19.88 49.08,19.17 51.81,18.46 54.36,18.97 56.77,20.44 59.17,21.91 61.72,22.00" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 38.66,24.90 L 40.96,24.90 M 39.81,23.75 L 39.81,26.05" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 40.50,22.82 L 42.80,22.82 M 41.65,21.67 L 41.65,23.97" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 42.71,21.07 L 45.01,21.07 M 43.86,19.92 L 43.86,22.22" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 45.20,19.88 L 47.50,19.88 M 46.35,18.73 L 46.35,21.03" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 47.93,19.17 L 50.23,19.17 M 49.08,18.02 L 49.08,20.32" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 50.66,18.46 L 52.96,18.46 M 51.81,17.31 L 51.81,19.61" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 53.21,18.97 L 55.51,18.97 M 54.36,17.82 L 54.36,20.12" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 55.62,20.44 L 57.92,20.44 M 56.77,19.29 L 56.77,21.59" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 58.02,21.91 L 60.32,21.91 M 59.17,20.76 L 59.17,23.06" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 60.57,22.00 L 62.87,22.00 M 61.72,20.85 L 61.72,23.15" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 63.38,12.53 H 83.28 Q 86.28,12.53 86.28,15.53 V 21.61 Q 86.28,24.61 83.28,24.61 H 63.38 Q 60.38,24.61 60.38,21.61 V 15.53 Q 60.38,12.53 63.38,12.53 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="63.38,19.79 65.22,17.72 67.46,16.00 70.05,15.53 72.02,17.54 73.47,19.96 75.48,21.61 78.16,21.56 80.72,20.37 83.28,19.18" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 62.23,19.79 L 64.53,19.79 M 63.38,18.64 L 63.38,20.94" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 64.07,17.72 L 66.37,17.72 M 65.22,16.57 L 65.22,18.87" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 66.31,16.00 L 68.61,16.00 M 67.46,14.85 L 67.46,17.15" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 68.90,15.53 L 71.20,15.53 M 70.05,14.38 L 70.05,16.68" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 70.87,17.54 L 73.17,17.54 M 72.02,16.39 L 72.02,18.69" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 72.32,19.96 L 74.62,19.96 M 73.47,18.81 L 73.47,21.11" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 74.33,21.61 L 76.63,21.61 M 75.48,20.46 L 75.48,22.76" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 77.01,21.56 L 79.31,21.56 M 78.16,20.41 L 78.16,22.71" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 79.57,20.37 L 81.87,20.37 M 80.72,19.22 L 80.72,21.52" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 82.13,19.18 L 84.43,19.18 M 83.28,18.03 L 83.28,20.33" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 85.87,14.92 H 109.93 Q 112.93,14.92 112.93,17.92 V 24.11 Q 112.93,27.11 109.93,27.11 H 85.87 Q 82.87,27.11 82.87,24.11 V 17.92 Q 82.87,14.92 85.87,14.92 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="85.87,18.09 88.61,17.92 91.36,18.54 94.11,19.16 96.87,19.77 99.62,20.39 102.37,21.01 105.12,21.62 107.87,22.24 109.93,24.11" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 84.72,18.09 L 87.02,18.09 M 85.87,16.94 L 85.87,19.24" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 87.46,17.92 L 89.76,17.92 M 88.61,16.77 L 88.61,19.07" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 90.21,18.54 L 92.51,18.54 M 91.36,17.39 L 91.36,19.69" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 92.96,19.16 L 95.26,19.16 M 94.11,18.01 L 94.11,20.31" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 95.72,19.77 L 98.02,19.77 M 96.87,18.62 L 96.87,20.92" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 98.47,20.39 L 100.77,20.39 M 99.62,19.24 L 99.62,21.54" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 101.22,21.01 L 103.52,21.01 M 102.37,19.86 L 102.37,22.16" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 103.97,21.62 L 106.27,21.62 M 105.12,20.47 L 105.12,22.77" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 106.72,22.24 L 109.02,22.24 M 107.87,21.09 L 107.87,23.39" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 108.78,24.11 L 111.08,24.11 M 109.93,22.96 L 109.93,25.26" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 111.87,23.17 H 122.35 Q 125.35,23.17 125.35,26.17 V 48.83 Q 125.35,51.83 122.35,51.83 H 111.87 Q 108.87,51.83 108.87,48.83 V 26.17 Q 108.87,23.17 111.87,23.17 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="111.87,26.17 113.79,28.23 115.71,30.30 116.87,32.82 117.78,35.48 118.70,38.15 119.61,40.82 120.52,43.49 121.43,46.16 122.35,48.83" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 110.72,26.17 L 113.02,26.17 M 111.87,25.02 L 111.87,27.32" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 112.64,28.23 L 114.94,28.23 M 113.79,27.08 L 113.79,29.38" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 114.56,30.30 L 116.86,30.30 M 115.71,29.15 L 115.71,31.45" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 115.72,32.82 L 118.02,32.82 M 116.87,31.67 L 116.87,33.97" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 116.63,35.48 L 118.93,35.48 M 117.78,34.33 L 117.78,36.63" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 117.55,38.15 L 119.85,38.15 M 118.70,37.00 L 118.70,39.30" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 118.46,40.82 L 120.76,40.82 M 119.61,39.67 L 119.61,41.97" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 119.37,43.49 L 121.67,43.49 M 120.52,42.34 L 120.52,44.64" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 120.28,46.16 L 122.58,46.16 M 121.43,45.01 L 121.43,47.31" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 121.20,48.83 L 123.50,48.83 M 122.35,47.68 L 122.35,49.98" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 120.06,48.50 H 123.15 Q 126.15,48.50 126.15,51.50 V 75.98 Q 126.15,78.98 123.15,78.98 H 120.06 Q 117.06,78.98 117.06,75.98 V 51.50 Q 117.06,48.50 120.06,48.50 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="123.15,51.50 122.42,54.22 121.68,56.94 120.92,59.66 120.16,62.38 120.06,65.08 120.97,67.75 121.21,70.46 120.63,73.22 120.06,75.98" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 122.00,51.50 L 124.30,51.50 M 123.15,50.35 L 123.15,52.65" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 121.27,54.22 L 123.57,54.22 M 122.42,53.07 L 122.42,55.37" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 120.53,56.94 L 122.83,56.94 M 121.68,55.79 L 121.68,58.09" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 119.77,59.66 L 122.07,59.66 M 120.92,58.51 L 120.92,60.81" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 119.01,62.38 L 121.31,62.38 M 120.16,61.23 L 120.16,63.53" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 118.91,65.08 L 121.21,65.08 M 120.06,63.93 L 120.06,66.23" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 119.82,67.75 L 122.12,67.75 M 120.97,66.60 L 120.97,68.90" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 120.06,70.46 L 122.36,70.46 M 121.21,69.31 L 121.21,71.61" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 119.48,73.22 L 121.78,73.22 M 120.63,72.07 L 120.63,74.37" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 118.91,75.98 L 121.21,75.98 M 120.06,74.83 L 120.06,77.13" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 117.17,75.73 H 119.44 Q 122.44,75.73 122.44,78.73 V 86.87 Q 122.44,89.87 119.44,89.87 H 117.17 Q 114.17,89.87 114.17,86.87 V 78.73 Q 114.17,75.73 117.17,75.73 Z" fill="rgba(139, 50, 54, 0.12)" stroke="none" opacity="0.95" />
+  <polyline points="119.44,78.73 118.70,81.45 117.92,84.15 117.17,86.87" fill="none" stroke="#8B3236" stroke-width="1" opacity="0.7" />
+  <path d="M 118.29,78.73 L 120.59,78.73 M 119.44,77.58 L 119.44,79.88" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 117.55,81.45 L 119.85,81.45 M 118.70,80.30 L 118.70,82.60" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 116.77,84.15 L 119.07,84.15 M 117.92,83.00 L 117.92,85.30" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <path d="M 116.02,86.87 L 118.32,86.87 M 117.17,85.72 L 117.17,88.02" stroke="#8B3236" stroke-width="1.00" stroke-linecap="round" fill="none" />
+  <text x="122.41" y="100.78" text-anchor="start" font-family="JetBrains Mono, monospace" font-size="5.5" font-weight="700" fill="#8B3236"><tspan>nfp</tspan><tspan baseline-shift="sub" font-size="4">1</tspan></text>
+  <text x="113.14" y="117.47" text-anchor="start" font-family="JetBrains Mono, monospace" font-size="5.5" font-weight="700" fill="#8B3236"><tspan>nfp</tspan><tspan baseline-shift="sub" font-size="4">2</tspan></text>
+  <text x="123.44" y="84.30" text-anchor="start" font-family="JetBrains Mono, monospace" font-size="5.5" font-weight="700" fill="#8B3236"><tspan>nfp</tspan><tspan baseline-shift="sub" font-size="4">k</tspan></text>
+  <polygon points="53.00,84.41 49.66,99.26 59.83,105.77 61.77,110.77 61.43,114.79 63.41,118.57 59.48,124.72 54.52,116.43 41.82,122.33 21.16,117.70 15.28,111.39 19.03,97.93 17.01,93.52 18.87,84.61 23.82,82.12 26.97,75.30 50.97,80.01" fill="rgba(212, 221, 230, 0.55)" stroke="#748BA2" stroke-width="1.5" />
+  <path d="M 35.34,100.68 L 39.34,100.68 M 37.34,98.68 L 37.34,102.68" stroke="#748BA2" stroke-width="1.25" stroke-linecap="round" fill="none" />
+</svg>
