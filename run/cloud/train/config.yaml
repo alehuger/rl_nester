@@ -1,0 +1,96 @@
+# cloud:
+#   project_id:
+#   bucket:
+#   region:
+#   repository_name:
+#   docker_tag:
+#   machine_type:
+#   gpu_type: "nvidia-rtx-pro-6000"
+#   gpu_count:
+#   provisioning_model:
+#   data_path:
+#   pretrained_model_path: null
+
+# Training Configuration for Improvement
+environment:
+  nfp_patch_size: 10
+  data_path: "data/db/processed/train_db.npz"
+  family_size_range: [4,4]
+  episode_length: 60
+  resample_length: 0.05
+  resample_length_nfp: 0.1
+  limit_samples: 800000
+  max_reward: true
+
+
+
+training:
+  exp_name: ""
+  scale:
+    total_timesteps: 10000000000
+    num_envs: 128
+    num_episodes: 10
+
+  optimizer:
+    learning_rate: 2e-4
+    anneal_lr: true
+    eps: 1e-5
+
+  settings:
+    seed: 1
+    torch_deterministic: false
+    cuda: true
+    use_bf16: true
+    save_freq: 500
+    resume_from_checkpoint: false
+
+  ppo:
+    gae_lambda: 0.95
+    minibatch_size: 5000
+    update_epochs: 5
+    norm_adv: true
+    clip_coef: 0.05
+    clip_vloss: true
+    ent_coef_item: 0.05 # 0.05
+    ent_coef_rotation: 0.01 #0.01
+    ent_coef_place: 0.01 #0.01
+    max_grad_norm: 0.5
+    target_kl: 0.02
+    gamma: 0.98
+    vf_coef: 0.2
+    eta: 0.02
+    adv_filter_start_after_iteration: 50
+
+
+model:
+  mounted_folder: "data/runs/"
+  pretrained_model_path: null #save
+  pretrained_checkpoint: null
+  num_frozen_layers: 0
+  agent_type: "pot"
+
+  model_kwargs:
+    data_patch_size: 10
+    encoder_config:
+      transformer:
+        embed_dim: 128 # Channel width for encoder; stage1/stage2/value use this size.
+        num_heads: 4
+        num_layers: 6 # Encoder transformer depth (patch-level attention).
+        num_fourier_bands: 32 # CPE richness for contour coordinates.
+        num_registers: 0 # Extra global tokens prepended to the sequence.
+        layer_norm_eps: 1.0e-5
+        activation: "gelu"
+        norm_first: false
+
+      mlp_heads:
+        num_layers: 5 # Layers in the MLP after encoder readout (per-polygon embedding path).
+        hidden_dim: 128
+
+    policy_config:
+      rotation_coarse_bins: 72 # Coarse delta_theta bins in [-pi, pi).
+      rotation_fine_bins: 5 # Fine bins per coarse bin (72*10 effective bins).
+      subregion_bins: 10 # Placement logits (stage2 head output size).
+      stage2_num_blocks: 4 # Stage2 transformer-ish depth (each block: self-attn, cross-attn to context, FFN).
+
+    value_config:
+      hidden_dims: [256, 128, 128, 128]

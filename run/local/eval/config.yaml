@@ -1,0 +1,43 @@
+
+data:
+  upload_eval_results: true
+  family_size_range: [8,8]
+  val_db_local: "data/db/processed/test_families_fam15_size8.npz"
+  seed_initial_placement_start: 1000
+  num_instances: 15
+  resample_length: 0.05
+  resample_length_nfp: 0.1
+  max_vertices: 1000
+  nfp_patch_size: 10
+  max_reward: true
+
+settings:
+  # Optional short label; adds a subfolder under the budget tag (local + GCS) to separate runs.
+  eval_name: "s53"
+  use_bf16: true
+  device: "cuda"
+  require_full_checkpoint_match: true
+  skip_download_if_present: true
+  batch_size: 4000
+  episode_length: 80
+  sampling_mode: "both"
+  type: "exploit"
+  exploit_p: 30
+  elite_frac: 0.001
+  # Rollout-init plot: top fraction by best_occ (defaults to elite_frac).
+  # plot_rollout_top_frac: 0.01
+  # Occ-vs-likelihood plot (default 1.0 = all rollouts; caps points for memory).
+  plot_occ_likelihood_top_frac: 1.0
+  max_occ_likelihood_plot_points: 0
+  warm_start_p: 0.0
+  # When type is exploit: elite replay ranks by best_occ only unless:
+  # use_critic_elite_ranking: true
+  # critic_elite_coef: 0.05   # sort key = best_occ + coef * V(s0); tune scale vs occupancy
+  num_episodes: 1000000
+
+model:
+  mounted_folder: "/mnt/bucket/"
+  # Must match training upload: runs/<training.exp_name>/<timestamp>/ (see training.exp_name).
+  model_folder: "nester/final/P8/recover/20260519_132932/"
+  #"nester/final/P4/fix_rotation/20260518_145014/"
+  checkpoint_file: "checkpoint_7096320000.pt" #"checkpoint_9953280000.pt" #"checkpoint_1013760000.pt" #"checkpoint_4055040000.pt" #"checkpoint_2027520000.pt" #"checkpoint_4055040000.pt" #"checkpoint_8017920000.pt"

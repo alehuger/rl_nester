@@ -1,0 +1,45 @@
+cloud:
+  project_id:
+  bucket:
+  region:
+  repository_name:
+  docker_tag:
+  machine_type:
+  gpu_type: "nvidia-rtx-pro-6000"
+  gpu_count:
+  provisioning_model:
+  val_db_blob:
+
+data:
+  upload_eval_results: true
+  family_size_range: [4,4]
+  val_db_local: "data/db/processed/test_families_fam15_size4.npz"
+  seed_initial_placement_start: 1000
+  num_instances: 15
+  resample_length: 0.05
+  resample_length_nfp: 0.1
+  nfp_patch_size: 10
+  max_reward: true
+
+settings:
+  # Optional short label; adds a subfolder under the budget tag (local + GCS) to separate runs.
+  eval_name: ""
+  use_bf16: true
+  device: "cuda"
+  require_full_checkpoint_match: true
+  skip_download_if_present: true
+  batch_size: 4000
+  episode_length: 80
+  sampling_mode: "both"
+  type: "exploit"
+  exploit_p: 30
+  elite_frac: 0.001
+  plot_occ_likelihood_top_frac: 1.0
+  max_occ_likelihood_plot_points: 0
+  warm_start_p: 0.0
+  num_episodes: 1000000
+
+model:
+  mounted_folder: "/mnt/bucket/"
+  model_folder: ""
+  checkpoint_file: ""
