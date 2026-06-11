@@ -11,7 +11,6 @@ __pycache__/
 
 # Logs
 *.log
-*out*
 *.prof
 
 # specific files extensions
