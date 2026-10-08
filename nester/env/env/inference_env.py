@@ -5,6 +5,7 @@ from __future__ import annotations
 import numpy as np
 
 from nester.env.env.base_env import BaseEnv
+from nester.env.panel.nfp.utils import MAX_NFP_COMPONENTS
 from nester.env.utils.sharing_memory import PolygonsShmView
 
 
@@ -29,6 +30,9 @@ class InferenceEnv(BaseEnv):
         nfp_cache_shm_meta: dict | None = None,
         placement_seed: int | None = None,
         resample_length_nfp: float | None = None,
+        occupancy_metric: str = "aabb",
+        max_nfp_components: int = MAX_NFP_COMPONENTS,
+        step_warmup: int = 0,
     ):
         _ = (use_nfp_cache, nfp_cache_bins, nfp_cache_shm_meta, placement_seed)
 
@@ -48,6 +52,9 @@ class InferenceEnv(BaseEnv):
             nfp_patch_size=nfp_patch_size,
             max_reward=max_reward,
             track_best_panel=True,
+            occupancy_metric=occupancy_metric,
+            max_nfp_components=max_nfp_components,
+            step_warmup=step_warmup,
         )
 
     def reset(self, seed: int | None = None, options: dict | None = None):

@@ -1,0 +1,38 @@
+# P4 policy trained with the oriented minimum-area rectangle (`occupancy_metric: min_rect`).
+# Best in-training bench checkpoint of run 20260920_121349:
+#   15 instances x 1000 episodes x 80 steps, mean best occupancy 0.8089.
+# Place the checkpoint at
+#   data/runs/nester/post/P4/ablation/dense_reward_minrect/20260920_121349/models/checkpoint_5529600000.pt
+# and the test families at data/db/processed/test_families_fam15_size4.npz.
+
+data:
+  upload_eval_results: false
+  family_size_range: [4, 4]
+  val_db_local: "data/db/processed/test_families_fam15_size4.npz"
+  seed_initial_placement_start: 1000
+  num_instances: 15
+  resample_length: 0.05
+  resample_length_nfp: 0.1
+  max_vertices: 500
+  nfp_patch_size: 10
+  max_reward: false
+  occupancy_metric: min_rect
+
+settings:
+  eval_name: "minrect"
+  use_bf16: true
+  device: "cuda"
+  require_full_checkpoint_match: true
+  skip_download_if_present: true
+  batch_size: 64
+  episode_length: 80
+  sampling_mode: "both"
+  type: "random"
+  exploit_p: 0
+  warm_start_p: 0.0
+  num_episodes: 1000
+
+model:
+  mounted_folder: "data/runs/"
+  model_folder: "nester/post/P4/ablation/dense_reward_minrect/20260920_121349"
+  checkpoint_file: "checkpoint_5529600000.pt"

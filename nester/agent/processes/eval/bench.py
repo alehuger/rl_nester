@@ -37,6 +37,7 @@ from nester.agent.processes.eval.plots import (
     save_best_occ_rollout_init_trace_png,
     save_best_occ_vs_log_likelihood_png,
 )
+from nester.env.panel.metrics import validate_occupancy_metric
 from nester.env.utils.sharing_memory import SharedBenchData
 from nester.env.utils.vec_envs import DynamicAsyncVectorEnv
 
@@ -169,6 +170,9 @@ class EvalPipeline:
         self.use_critic_elite_ranking = bool(
             self.settings_config.get("use_critic_elite_ranking", False)
         )
+        self.occupancy_metric = validate_occupancy_metric(
+            self.data_config.get("occupancy_metric")
+        )
         self.sampling_mode = str(self.settings_config.get("sampling_mode", "both")).lower()
         _policy_stoch, self.placement_varied = sampling_flags(self.sampling_mode)
         del _policy_stoch
@@ -200,6 +204,7 @@ class EvalPipeline:
             f"use_critic_elite_ranking={self.use_critic_elite_ranking}, critic_elite_coef={self.critic_elite_coef}",
             flush=True,
         )
+        print(f"Occupancy metric: {self.occupancy_metric}", flush=True)
 
     @staticmethod
     def _is_compatible_expand_shape(param_name: str, model_shape: tuple, ckpt_shape: tuple) -> bool:
@@ -370,6 +375,8 @@ class EvalPipeline:
                         max_reward=self.data_config.get("max_reward"),
                         placement_seed=placement_base + instance_index * 1_000_003 + env_i,
                         resample_length_nfp=resample_length_nfp,
+                        occupancy_metric=self.occupancy_metric,
+                        max_nfp_components=int(self.data_config.get("max_nfp_components", 3)),
                     )
                     for env_i in range(self.batch_size)
                 ],

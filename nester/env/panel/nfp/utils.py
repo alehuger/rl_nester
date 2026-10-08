@@ -1,51 +1,93 @@
 from shapely.geometry import MultiPolygon, Polygon
 
 # Stage-2 NFP component semantics (1-based ids; 0 is padding in the agent):
-#   1 — exterior of the primary forbidden polygon
-#   2 — largest hole (by enclosed area)
-#   3 — second-largest hole
+#   1 — exterior of the primary (largest-area) forbidden polygon
+#   2+ — remaining rings: holes of the primary polygon first (largest area),
+#        then exteriors and holes of additional connected components.
+# Paper default is 1 exterior + 2 holes.
 MAX_NFP_HOLES = 2
 MAX_NFP_COMPONENTS = 1 + MAX_NFP_HOLES
 
 
-def _primary_forbidden_polygon(forbidden_geom):
+def _forbidden_polygons(forbidden_geom):
     if forbidden_geom is None or forbidden_geom.is_empty:
-        return None
+        return []
     if forbidden_geom.geom_type == "Polygon":
-        return forbidden_geom
-    if forbidden_geom.geom_type == "MultiPolygon":
-        return max(forbidden_geom.geoms, key=lambda g: g.area)
-    return None
-
-
-def select_nfp_component_rings(forbidden_geom, max_holes: int = MAX_NFP_HOLES):
-    """
-    Pick up to three NFP boundary rings from the forbidden union.
-
-    The union may contain multiple disconnected polygons; only the largest-area
-    polygon is kept. Its exterior is component 1. Interior rings (holes) are ranked
-    by enclosed area; the two largest become components 2 and 3. All other geometry
-    is discarded.
-    """
-    poly = _primary_forbidden_polygon(forbidden_geom)
-    if poly is None or poly.is_empty:
+        geoms = [forbidden_geom]
+    elif forbidden_geom.geom_type == "MultiPolygon":
+        geoms = list(forbidden_geom.geoms)
+    else:
         return []
+    geoms = [g for g in geoms if g is not None and (not g.is_empty) and float(g.area) > 0.0]
+    geoms.sort(key=lambda g: float(g.area), reverse=True)
+    return geoms
 
-    rings = []
-    exterior = poly.exterior
-    if exterior is None or exterior.is_empty or len(exterior.coords) < 2:
-        return []
-    rings.append((1, exterior))
 
-    ranked_holes = []
+def _primary_forbidden_polygon(forbidden_geom):
+    polys = _forbidden_polygons(forbidden_geom)
+    return polys[0] if polys else None
+
+
+def _ranked_holes(poly):
+    ranked = []
     for interior in poly.interiors:
         hole_poly = Polygon(interior)
         if hole_poly.is_empty or hole_poly.area <= 0:
             continue
-        ranked_holes.append((float(hole_poly.area), interior))
-    ranked_holes.sort(key=lambda item: item[0], reverse=True)
+        ranked.append((float(hole_poly.area), interior))
+    ranked.sort(key=lambda item: item[0], reverse=True)
+    return [interior for _, interior in ranked]
 
-    for comp_id, (_, interior) in enumerate(ranked_holes[:max_holes], start=2):
-        rings.append((comp_id, interior))
+
+def _valid_exterior(poly):
+    exterior = poly.exterior
+    if exterior is None or exterior.is_empty or len(exterior.coords) < 2:
+        return None
+    return exterior
+
+
+def select_nfp_component_rings(
+    forbidden_geom,
+    max_holes: int = MAX_NFP_HOLES,
+    max_components: int | None = None,
+):
+    """
+    Pick NFP boundary rings from the forbidden union.
+
+    The largest-area polygon is always first: its exterior is component 1, then
+    its holes ranked by enclosed area. If ``max_components`` is larger than
+    ``1 + max_holes``, additional connected components are appended (exterior
+    then holes) until the budget is filled. Paper default ``max_components=3``
+    matches the historical “largest polygon + two holes” cap.
+    """
+    budget = int(max_components) if max_components is not None else 1 + int(max_holes)
+    if budget <= 0:
+        return []
+
+    polys = _forbidden_polygons(forbidden_geom)
+    if not polys:
+        return []
+
+    rings = []
+    primary_ext = _valid_exterior(polys[0])
+    if primary_ext is None:
+        return []
+    rings.append((1, primary_ext))
+
+    def _append_holes(poly):
+        for interior in _ranked_holes(poly):
+            if len(rings) >= budget:
+                return
+            rings.append((len(rings) + 1, interior))
+
+    _append_holes(polys[0])
+    for poly in polys[1:]:
+        if len(rings) >= budget:
+            break
+        ext = _valid_exterior(poly)
+        if ext is None:
+            continue
+        rings.append((len(rings) + 1, ext))
+        _append_holes(poly)
 
     return rings

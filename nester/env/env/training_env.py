@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from nester.env.env.base_env import BaseEnv
+from nester.env.panel.nfp.utils import MAX_NFP_COMPONENTS
 
 _TRAINING_GENERATOR = "nfp_random"
 
@@ -21,9 +22,14 @@ class TrainingEnv(BaseEnv):
         resample_length_nfp: float | None = None,
         seed: int | None = None,
         env_index: int = 0,
+        max_vertices: int = 1000,
+        max_nfp_vertices: int | None = None,
         nfp_patch_size: int = 10,
         max_reward: bool = False,
         track_best_panel: bool = False,
+        occupancy_metric: str = "aabb",
+        max_nfp_components: int = MAX_NFP_COMPONENTS,
+        step_warmup: int = 0,
     ):
         super().__init__(
             db_path=db_path,
@@ -36,7 +42,12 @@ class TrainingEnv(BaseEnv):
             resample_length_nfp=resample_length_nfp,
             seed=seed,
             env_index=env_index,
+            max_vertices=max_vertices,
+            max_nfp_vertices=max_nfp_vertices,
             nfp_patch_size=nfp_patch_size,
             max_reward=max_reward,
             track_best_panel=track_best_panel,
+            occupancy_metric=occupancy_metric,
+            max_nfp_components=max_nfp_components,
+            step_warmup=step_warmup,
         )

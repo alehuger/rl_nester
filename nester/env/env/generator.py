@@ -10,7 +10,7 @@ from nester.env.utils.utils import (
     rotate_np_array,
 )
 from nester.env.panel.nfp.cgal import _run_c_binding
-from nester.env.panel.nfp.utils import select_nfp_component_rings
+from nester.env.panel.nfp.utils import MAX_NFP_COMPONENTS, select_nfp_component_rings
 
 
 class Scenario:
@@ -115,6 +115,7 @@ class GeneratorNFPRandom(GeneratorPolygons):
         translation_range: float,
         resample_length: float = 0.1,
         max_vertices: int = 1000,
+        max_nfp_components: int = MAX_NFP_COMPONENTS,
     ):
         super().__init__(
             polygons_db_path,
@@ -125,6 +126,7 @@ class GeneratorNFPRandom(GeneratorPolygons):
         )
         self.resample_length = resample_length
         self.max_vertices = max_vertices
+        self.max_nfp_components = int(max_nfp_components)
 
     def _compute_nfp_candidates(self, moving_poly: Polygon, placed_polys):
         moving_centroid = np.array(moving_poly.centroid.coords[0], dtype=np.float32)
@@ -141,18 +143,28 @@ class GeneratorNFPRandom(GeneratorPolygons):
             shell_world = shell + shift
             holes_world = [h + shift for h in holes]
             try:
-                forbidden_regions.append(Polygon(shell_world, holes_world))
+                poly = Polygon(shell_world, holes_world)
             except Exception as e:
                 raise RuntimeError(
                     "NFP forbidden-region construction failed during random initialization"
                 ) from e
+            if not poly.is_valid:
+                poly = poly.buffer(0)
+            if poly.is_empty:
+                continue
+            forbidden_regions.append(poly)
         if not forbidden_regions:
             raise ValueError(
                 "No forbidden NFP regions found while building random NFP initialization"
             )
 
-        forbidden_union = unary_union(forbidden_regions)
-        component_rings = select_nfp_component_rings(forbidden_union)
+        try:
+            forbidden_union = unary_union(forbidden_regions)
+        except Exception:
+            forbidden_union = unary_union([p.buffer(0) for p in forbidden_regions])
+        component_rings = select_nfp_component_rings(
+            forbidden_union, max_components=self.max_nfp_components
+        )
         if not component_rings:
             raise ValueError("Empty NFP boundary while building random NFP initialization")
 

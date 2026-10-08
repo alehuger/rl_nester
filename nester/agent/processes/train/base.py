@@ -14,6 +14,7 @@ from abc import ABC, abstractmethod
 from nester import PATH_TO_PROJECT
 from nester.agent.agent.agent import PotRLAgent
 from nester.agent.processes.train.logger import NoOpLogger, RLLogger
+from nester.env.panel.metrics import validate_occupancy_metric
 from nester.env.utils.vec_envs import DynamicAsyncVectorEnv
 from nester.env.utils.sharing_memory import SharedPolygonData
 from nester.agent.agent.utils import (
@@ -138,6 +139,20 @@ class BaseTrainer(ABC):
         resample_length = self.env_cfg.get("resample_length", 0.1)
         resample_length_nfp = self.env_cfg.get("resample_length_nfp", resample_length)
         limit_samples = self.env_cfg.get("limit_samples", 100)
+        max_vertices = int(self.env_cfg.get("max_vertices", 1000))
+        raw_max_nfp = self.env_cfg.get("max_nfp_vertices")
+        max_nfp_vertices = int(raw_max_nfp) if raw_max_nfp is not None else None
+        self.occupancy_metric = validate_occupancy_metric(self.env_cfg.get("occupancy_metric"))
+        ppo_cfg = self.global_cfg.get("training", {}).get("ppo", {})
+        curriculum_cfg = ppo_cfg.get("curriculum", {}) or {}
+        step_warmup = (
+            int(curriculum_cfg.get("max_warmup", 0))
+            if bool(curriculum_cfg.get("enabled", False))
+            else 0
+        )
+        if self.is_main:
+            print(f"Occupancy metric: {self.occupancy_metric}")
+            print(f"step_warmup (normalized_step denom offset): {step_warmup}")
 
         self.envs = DynamicAsyncVectorEnv(
             [
@@ -151,8 +166,13 @@ class BaseTrainer(ABC):
                     limit_samples,
                     shared_memory_dict,
                     env_index=i,
+                    max_vertices=max_vertices,
+                    max_nfp_vertices=max_nfp_vertices,
                     nfp_patch_size=int(self.env_cfg.get("nfp_patch_size", self.data_patch_size)),
                     max_reward=bool(self.env_cfg.get("max_reward", False)),
+                    occupancy_metric=self.occupancy_metric,
+                    max_nfp_components=int(self.env_cfg.get("max_nfp_components", 3)),
+                    step_warmup=step_warmup,
                 )
                 for i in range(num_envs)
             ]

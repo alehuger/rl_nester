@@ -310,6 +310,12 @@ def apply_env_model_overrides(env_cfg: dict, model_kwargs: dict) -> dict:
     family_size_range = env_cfg.get("family_size_range", [4, 4])
     encoder_kwargs["max_candidates"] = max(family_size_range)
     encoder_kwargs["data_patch_size"] = model_kwargs.get("data_patch_size", 10)
+    mv = env_cfg.get("max_vertices")
+    if mv is not None:
+        encoder_kwargs.setdefault("transformer", {})["max_vertices"] = int(mv)
+    policy_kwargs = model_kwargs.setdefault("policy_config", {})
+    if env_cfg.get("max_nfp_components") is not None:
+        policy_kwargs["max_nfp_components"] = int(env_cfg["max_nfp_components"])
     return model_kwargs
 
 
@@ -323,9 +329,14 @@ def make_env(
     limit_samples: int,
     shared_memory_dict: dict[str, str],
     env_index: int = 0,
+    max_vertices: int = 1000,
+    max_nfp_vertices: int | None = None,
     nfp_patch_size: int = 10,
     max_reward: bool = False,
     track_best_panel: bool = False,
+    occupancy_metric: str = "aabb",
+    max_nfp_components: int = 3,
+    step_warmup: int = 0,
 ):
     def thunk():
         env = TrainingEnv(
@@ -338,9 +349,14 @@ def make_env(
             resample_length_nfp=resample_length_nfp,
             seed=seed,
             env_index=env_index,
+            max_vertices=max_vertices,
+            max_nfp_vertices=max_nfp_vertices,
             nfp_patch_size=nfp_patch_size,
             max_reward=max_reward,
             track_best_panel=track_best_panel,
+            occupancy_metric=occupancy_metric,
+            max_nfp_components=max_nfp_components,
+            step_warmup=step_warmup,
         )
         env = gym.wrappers.RecordEpisodeStatistics(env)
         env.action_space.seed(seed)
@@ -366,6 +382,9 @@ def make_inference_env(
     use_nfp_cache: bool = False,
     nfp_cache_bins: int = 720,
     nfp_cache_shm_meta: dict | None = None,
+    occupancy_metric: str = "aabb",
+    max_nfp_components: int = 3,
+    step_warmup: int = 0,
 ):
     """Thunk factory for one AsyncVectorEnv worker on a fixed bench family (shared memory)."""
     _ = family_size  # family size is implied by SHM; caller keeps arg for layout checks
@@ -387,6 +406,9 @@ def make_inference_env(
             resample_length_nfp=float(resample_length_nfp)
             if resample_length_nfp is not None
             else None,
+            occupancy_metric=str(occupancy_metric),
+            max_nfp_components=int(max_nfp_components),
+            step_warmup=int(step_warmup),
         )
 
     return thunk

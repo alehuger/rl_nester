@@ -17,8 +17,9 @@ from nester.env.env.generator import (
     GeneratorPolygons,
     Scenario,
 )
+from nester.env.panel.metrics import DEFAULT_OCCUPANCY_METRIC, validate_occupancy_metric
 from nester.env.panel.nfp.cgal import _run_c_binding
-from nester.env.panel.nfp.utils import select_nfp_component_rings
+from nester.env.panel.nfp.utils import MAX_NFP_COMPONENTS, select_nfp_component_rings
 from nester.env.panel.panel import Panel
 
 
@@ -36,11 +37,16 @@ class BaseEnv(gym.Env):
         seed: int | None = None,
         env_index: int = 0,
         max_vertices: int = 1000,
+        max_nfp_vertices: int | None = None,
         nfp_patch_size: int = 10,
         max_reward: bool = False,
         track_best_panel: bool = False,
+        occupancy_metric: str = DEFAULT_OCCUPANCY_METRIC,
+        max_nfp_components: int = MAX_NFP_COMPONENTS,
+        step_warmup: int = 0,
     ):
         self.config_db_path = db_path
+        self.occupancy_metric = validate_occupancy_metric(occupancy_metric)
         self.episode_length = episode_length
         self.family_size_range = family_size_range
         self.generator_type = generator_type
@@ -50,9 +56,12 @@ class BaseEnv(gym.Env):
         self.env_index = env_index
 
         self.max_vertices = max_vertices
+        self.max_nfp_vertices = max_nfp_vertices
         self.nfp_patch_size = int(nfp_patch_size)
         self.max_reward = bool(max_reward)
         self.track_best_panel = bool(track_best_panel)
+        self.max_nfp_components = int(max_nfp_components)
+        self.step_warmup = max(int(step_warmup), 0)
 
         self.translation_range = TRANSLATION_INIT_RANGE
         self.action_bounds = TRANSLATION_INIT_RANGE * TRANSLATION_SCALE
@@ -77,6 +86,7 @@ class BaseEnv(gym.Env):
             self.translation_range,
             resample_length=self.resample_length,
             max_vertices=self.max_vertices,
+            max_nfp_components=self.max_nfp_components,
         )
 
         # SPACES
@@ -236,7 +246,9 @@ class BaseEnv(gym.Env):
             )
 
         forbidden_union = unary_union(forbidden_regions)
-        component_rings = select_nfp_component_rings(forbidden_union)
+        component_rings = select_nfp_component_rings(
+            forbidden_union, max_components=self.max_nfp_components
+        )
         if not component_rings:
             raise ValueError(f"Empty NFP boundary after geometry processing for polygon_id={polygon_id}")
 
@@ -251,10 +263,10 @@ class BaseEnv(gym.Env):
             pts = self._resample_polyline_numpy(coords, self.resample_length_nfp)
             if pts.shape[0] == 0:
                 pts = coords
-            if total_points + pts.shape[0] > self.max_vertices:
+            if self.max_nfp_vertices is not None and total_points + pts.shape[0] > self.max_nfp_vertices:
                 raise ValueError(
-                    f"NFP contour has {total_points + pts.shape[0]} points, exceeds self.max_vertices={self.max_vertices}. "
-                    "Increase self.max_vertices to avoid cropping."
+                    f"NFP contour has {total_points + pts.shape[0]} points, exceeds "
+                    f"max_nfp_vertices={self.max_nfp_vertices}."
                 )
             chunk = (pts - moving_centroid).astype(np.float32)
             total_points += pts.shape[0]
@@ -368,9 +380,10 @@ class BaseEnv(gym.Env):
         ids_list = []
         theta_list = []
 
+        denom = float(self.episode_length + self.step_warmup)
         normalized_step = (
-            np.float32(self.step_count / self.episode_length)
-            if self.episode_length > 0
+            np.float32(np.clip(self.step_count / denom, 0.0, 1.0))
+            if denom > 0.0
             else np.float32(0.0)
         )
 
@@ -406,7 +419,9 @@ class BaseEnv(gym.Env):
                 "prev_best_occupancy": prev_best,
             }
 
-        # Flatten and Stack
+        # World-frame vertices. For ``aabb`` the origin-clamped metric keeps the nest
+        # near (0, 0). For ``min_rect`` the panel is recentered on its AABB after
+        # each transition (see ``_maybe_recenter_panel``), so this stays in-range.
         return {
             "flat_vertices": np.concatenate(flat_verts_list, axis=0).astype(np.float32),
             "poly_lengths": np.array(lengths_list, dtype=np.int64),
@@ -426,7 +441,9 @@ class BaseEnv(gym.Env):
         }
 
     def _load_panel_from_scenario(self, scenario: Scenario) -> None:
-        self.panel = Panel(scenario.placed_polygons, self.panel_bounds)
+        self.panel = Panel(
+            scenario.placed_polygons, self.panel_bounds, occupancy_metric=self.occupancy_metric
+        )
         self.base_polygons = {}
         self.current_theta = {}
         self.placed_ids = set(self.panel.polygons.keys())
@@ -435,6 +452,17 @@ class BaseEnv(gym.Env):
             centered = coords - np.array(panel_polygon.centroid, dtype=np.float32)
             self.base_polygons[i] = centered
             self.current_theta[i] = 0.0
+
+    def _maybe_recenter_panel(self) -> None:
+        """Keep the nest near the origin when occupancy is translation-invariant.
+
+        ``min_rect`` does not penalize a rigid shift, so without this the cluster can
+        walk outside the declared observation box (±MAX_LENGTH/2). AABB occupancy
+        already pins the layout to the origin, so we leave that metric unchanged.
+        """
+        if self.occupancy_metric != "min_rect":
+            return
+        self.panel.recenter_aabb()
 
     def _init_episode_metrics(self) -> None:
         self.initial_occupancy_ratio = self.panel.get_occupancy_ratio()
@@ -474,6 +502,7 @@ class BaseEnv(gym.Env):
             )
         self._load_panel_from_scenario(scenario)
         self._init_episode_metrics()
+        self._maybe_recenter_panel()
         if self.track_best_panel:
             self.best_occupancy_ratio = self.initial_occupancy_ratio
             self.best_panel = self.get_panel_observation()
@@ -563,6 +592,10 @@ class BaseEnv(gym.Env):
             self.nonzero_reward_count += 1
 
         self.best_occupancy_rollout = max(prev_best, float(current_occupancy_ratio))
+        # Recenter after scoring: ``min_rect`` occupancy is translation-invariant, so
+        # this does not change the reward, but it keeps ``flat_vertices`` / NFP patches
+        # inside the declared ±panel_bounds/2 observation box.
+        self._maybe_recenter_panel()
         if self.track_best_panel and current_occupancy_ratio > getattr(
             self, "best_occupancy_ratio", -float("inf")
         ):

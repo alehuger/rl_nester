@@ -59,14 +59,25 @@ Flat dict per env (vectorized as `Dict[env_index, obs]`):
 
 | Field | Role |
 |-------|------|
-| `flat_vertices` | Resampled contour vertices (panel-centered) |
+| `flat_vertices` | Resampled contour vertices. `min_rect` recenters the nest on its axis-aligned box so vertices stay near the origin |
 | `poly_lengths` | Vertex count per placed polygon |
 | `poly_ids` | Panel slot ids |
 | `poly_theta` | Absolute rotation per piece — used by agent for NFP, not fed to PoT |
-| `normalized_step` | `step_count / episode_length` |
+| `normalized_step` | `step_count / (episode_length + step_warmup)`. `step_warmup` is the curriculum `max_warmup` while curriculum is on, otherwise 0 |
 | `prev_best_occupancy` | Best occupancy so far in the rollout segment |
 
 ---
+
+## Occupancy
+
+`environment.occupancy_metric` (also `data.occupancy_metric` at eval):
+
+| Value | Bounding box |
+|-------|----------------|
+| `aabb` (default) | World-axis box forced to contain the origin. Paper metric. |
+| `min_rect` | Minimum-area enclosing rectangle over all orientations. Invariant to translating or rotating the whole nest. After each reset and step the panel is recentered on its axis-aligned box so observations stay near the origin. |
+
+The oriented-rectangle P4 and P8 checkpoints were trained with `min_rect`. Loading them under `aabb` changes both the reward and the coordinates the policy sees.
 
 ## Reward
 
