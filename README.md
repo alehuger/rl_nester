@@ -62,7 +62,7 @@ The paper scores occupancy with an axis-aligned box. These runs train and evalua
 | P4 | 81.18 | **81.29** | +0.11 |
 | P8 | 81.79 | **82.51** | +0.72 |
 
-P4 is `checkpoint_5775360000.pt` from `dense_reward_minrect/20260920_121349`. P8 is `checkpoint_2519040000.pt` from `dense_reward_minrect_arch/20260917_123123`.
+You can find the different checkpoint for this ablation in the drive. Switching the metric is one config field, occupancy_metric: aabb for the paper box, min_rect for the oriented rectangle. Each checkpoint has to stay with the metric it was trained on.
 
 More on run scripts: [run/README.md](run/README.md).
 
