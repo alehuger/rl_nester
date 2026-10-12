@@ -53,23 +53,16 @@ python run/local/eval/run.py
 python run/data_factory/preprocessing.py   # optional: OSM → data/db/processed/
 ```
 
-## Oriented-rectangle checkpoints (P4 and P8)
+## Oriented rectangle
 
-These weights use the same Polygon Transformer as the paper. The change is the occupancy used for reward and for the coordinates the policy sees: `occupancy_metric: min_rect` scores the **minimum-area enclosing rectangle** (any orientation) and recenters the nest on its axis-aligned box after every reset and step. The default `aabb` metric is unchanged, so older checkpoints still run with the paper setup.
+The paper scores occupancy with an axis-aligned box. These runs train and evaluate with the **minimum-area enclosing rectangle** (any orientation). On the same 1M-episode protocol as the paper (15 held-out instances, 80 steps), mean best occupancy rises:
 
-| Tier | Run | Checkpoint | In-training bench (15 × 1000 × 80) |
-|------|-----|------------|-------------------------------------|
-| P4 | `20260920_121349` | `checkpoint_5529600000.pt` | mean best occupancy **0.8089** |
-| P8 | `20260914_150005` | `checkpoint_2949120000.pt` | mean best occupancy **0.7809** |
+| | Paper | Oriented rectangle | Gain |
+|--|------:|-------------------:|-----:|
+| P4 | 81.18 | **81.29** | +0.11 |
+| P8 | 81.79 | **82.51** | +0.72 |
 
-Put each run under `data/runs/nester/post/<P4 or P8>/ablation/dense_reward_minrect/<run>/models/`. P4 test families go to `data/db/processed/test_families_fam15_size4.npz` (P8: `test_families_fam15_size8.npz`).
-
-```bash
-python run/local/eval/run.py --config run/local/eval/config_p4_minrect.yaml
-python run/local/eval/run.py --config run/local/eval/config_p8_minrect.yaml
-```
-
-To train with the same metric, set `environment.occupancy_metric: min_rect`. With curriculum on, `normalized_step` divides by `episode_length + max_warmup` (20 in these runs). P4 uses `max_vertices: 500` and `resample_length_nfp: 0.1`; P8 uses `1000` and `0.2`.
+P4 is `checkpoint_5775360000.pt` from `dense_reward_minrect/20260920_121349`. P8 is `checkpoint_2519040000.pt` from `dense_reward_minrect_arch/20260917_123123`.
 
 More on run scripts: [run/README.md](run/README.md).
 
